@@ -15,7 +15,6 @@ const style = StyleSheet.create({
      width:'100%',
      flex: 1,
      backgroundColor:'#a4a4f7',
-    //  height:250
     },
 })
 
