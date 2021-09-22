@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, SafeAreaView,} from 'react-native';
+import { StyleSheet, SafeAreaView,Image} from 'react-native';
 import Category from './screen/Category';
 import Quote from './components/Quote';
 import QuoteList from './screen/QuoteList';
@@ -8,10 +8,12 @@ import QuoteList from './screen/QuoteList';
 export default function App() {
   return (
     <SafeAreaView style={styles.container} >
-      {/* <Category /> */}
-      <QuoteList/>
 
-    </SafeAreaView>
+
+      <Image source={require('./assets/wallpaper.jpg')} style={StyleSheet.absoluteFillObject} blurRadius={.8} />
+      <Category />
+      </SafeAreaView>
+
     
   );
 }
@@ -19,7 +21,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop:20,
-    backgroundColor: '#333',
+
+    display:'flex',
+    // paddingTop:40,
+    backgroundColor: '#e0ac56',
+
+
   },
 });
