@@ -14,8 +14,6 @@ export default function Category() {
      keyExtractor={(item)=>item.key}
     columnWrapperStyle={{justifyContent: 'space-evenly'}}
     showsHorizontalScrollIndicator={false}
-    // contentContainerStyle={{ flexGrow: 1 }}
-    // contentContainerStyle={{justifyContent: 'space-evenly'}}
      style={styles.categoryList}
         data={[
           {key: 'Money'},

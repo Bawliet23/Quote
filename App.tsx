@@ -4,14 +4,16 @@ import { StyleSheet, SafeAreaView,Image} from 'react-native';
 import Category from './screen/Category';
 import Quote from './components/Quote';
 import QuoteList from './screen/QuoteList';
+import Home from './screen/Home';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container} >
 
 
-      <Image source={require('./assets/wallpaper.jpg')} style={StyleSheet.absoluteFillObject} blurRadius={.8} />
-      <Category />
+      {/* <Image source={require('./assets/wallpaper.jpg')} style={StyleSheet.absoluteFillObject} blurRadius={.8} />
+      <Category /> */}
+      <Home />
       </SafeAreaView>
 
     
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
 
     display:'flex',
     // paddingTop:40,
-    backgroundColor: '#e0ac56',
+    backgroundColor: '#f0f1f2',
 
 
   },
