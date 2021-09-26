@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -11,7 +12,7 @@ const Quote = (props) => {
     
     return (
         
-        <Animated.View style={{...animation},styles.quoteContainer}>
+        <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={{...animation},styles.quoteContainer}>
             <View style={styles.quote}>
                 <Text style={styles.text}
                 numberOfLines={2}
@@ -22,9 +23,9 @@ const Quote = (props) => {
             </View>
             <View  style={styles.quoteOptions} >
                 <Ionicons name="heart" style={styles.like} ></Ionicons>
-                <FontAwesome5 name="share" style={styles.share}></FontAwesome5>
+                <FontAwesome5 name="share" style={styles.like}></FontAwesome5>
             </View>
-        </Animated.View>
+        </LinearGradient>
 
     );
 }
@@ -36,12 +37,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin:20,
         borderRadius: 10,
-        borderWidth: 3,
-        borderColor: 'red',
+        // borderWidth: 3,
+        // borderColor: 'red',
         height:180,
-        backgroundColor:'blue',
         fontSize: 30,
-        backgroundColor:'white',
         shadowOpacity:.4,
         shadowRadius:20,
         
@@ -76,13 +75,15 @@ const styles = StyleSheet.create({
     text:{ 
     paddingHorizontal:40,
     fontSize: 24,
+    color:'#FFF',
     },
     authorText:{ 
-        borderBottomColor: 'red',
+        borderBottomColor: '#fff',
         borderBottomWidth: 2,
         marginBottom: 30,
         fontSize: 15,
         fontWeight:'700',
+        color:'#FFF',
     }
     
 

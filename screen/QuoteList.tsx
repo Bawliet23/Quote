@@ -56,7 +56,7 @@ const [quotes, setQuotes] = useState([
                 })
                 const transform = [{transform:scale}]
                 
-                return <Quote animation={transform} quote={item.quote} author={item.author} />
+                return <Quote animation={transform} color={['#bb7Caa', '#aC71A6', '#5A65E5']} quote={item.quote} author={item.author} />
                 
                  }}
                 keyExtractor={item => item.author}
