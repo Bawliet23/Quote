@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useRef,useEffect} from "react";
 import {
   View,
   TextInput,
@@ -9,6 +9,7 @@ import {
   ScrollView,
   TouchableOpacity,
   FlatList,
+  Animated
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -18,6 +19,17 @@ import Quote from "../components/Quote";
 import QuoteList from "./QuoteList";
 
 const Home = ({ navigation }) => {
+
+
+  const quoteConTX  = useRef(new Animated.Value(100)).current
+  const scrollX  = useRef(new Animated.Value(0)).current
+  useEffect(()=>{
+      Animated.timing(quoteConTX,{
+          toValue:0,
+          duration:2000,
+          useNativeDriver:true
+      }).start()
+  },[])
   return (
     <View style={styles.container}>
       {/* header */}
@@ -53,7 +65,11 @@ const Home = ({ navigation }) => {
 
         <View style={styles.categoryContainer}>
           <Text style={styles.catTitle}>Categories</Text>
-          <FlatList
+          <Animated.FlatList
+          onScroll={Animated.event(
+            [{nativeEvent:{contentOffset:{x:scrollX}}}],
+            {useNativeDriver:true}
+          )}
             style={styles.categoryList}
             showsHorizontalScrollIndicator={false}
             data={[
@@ -62,11 +78,19 @@ const Home = ({ navigation }) => {
               { id: 2, name: "Lonely" },
               { id: 3, name: "Life" },
             ]}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => navigation.push("Categories")}>
-                <CategoryItem>{item.name}</CategoryItem>
+            renderItem={({ item ,index}) => {
+            
+              const scale = scrollX.interpolate(
+                {
+                  inputRange:[-120,0,120*index,120*(index+2)],
+                  outputRange:[0,1,1,0]
+                }
+              )
+
+             return <TouchableOpacity onPress={() => navigation.push("Categories")}>
+                <CategoryItem animation={scale}>{item.name}</CategoryItem>
               </TouchableOpacity>
-            )}
+            }}
             horizontal={true}
           />
         </View>
@@ -77,7 +101,10 @@ const Home = ({ navigation }) => {
 
 
       {/* QuoteOfTheDay */}
-      <View style={styles.QuoteOfTheDay}>
+      <Animated.View style={[styles.QuoteOfTheDay,{transform:[{translateY:quoteConTX}],opacity:quoteConTX.interpolate({
+          inputRange:[0,100],
+          outputRange:[1,0]  
+        })}]}>
         <Text style={styles.catTitle}>Quote Of The Day</Text>
         <Quote
           animation={null}
@@ -85,13 +112,16 @@ const Home = ({ navigation }) => {
           quote="We become what we think about."
           author="Mohamed BHAJY"
         />
-      </View>
+      </Animated.View>
       {/* Saved Quotes */}
-      <View style={{flex:1}}>
+      <Animated.View style={{flex:1,transform:[{translateY:quoteConTX}],opacity:quoteConTX.interpolate({
+          inputRange:[0,100],
+          outputRange:[1,0]  
+        })}}>
       <Text style={styles.catTitle}>Trending</Text>
       <QuoteList />
 
-      </View>
+      </Animated.View>
       </ScrollView>
     </View>
   );

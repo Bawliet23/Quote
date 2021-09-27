@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useRef,useEffect} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -6,13 +6,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-const Quote = (props) => {
-    const animation = props.animation;
-    console.log(animation);
-    
+const Quote = (props:any) => {
+  
+  
     return (
-        
-        <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={{...animation},styles.quoteContainer}>
+        <Animated.View  style={styles.quoteContainer} >
+        <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={styles.lnCon}>
             <View style={styles.quote}>
                 <Text style={styles.text}
                 numberOfLines={2}
@@ -26,7 +25,7 @@ const Quote = (props) => {
                 <FontAwesome5 name="share" style={styles.like}></FontAwesome5>
             </View>
         </LinearGradient>
-
+        </Animated.View>
     );
 }
 
@@ -35,15 +34,22 @@ const styles = StyleSheet.create({
         display:'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin:20,
+        margin:10,
         borderRadius: 10,
+        
         // borderWidth: 3,
         // borderColor: 'red',
         height:180,
-        fontSize: 30,
-        shadowOpacity:.4,
-        shadowRadius:20,
+        backgroundColor:"red",
         
+    },lnCon:{
+        display:'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+        flex:1,
+        width:"100%",
+        height:"100%",
     },
     quote :{
         flex:5,

@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 const CategoryItem = (props) => {
     return (
-        <Animated.View style={styles.category}>
+        <Animated.View style={[styles.category,{transform:[{scale:props.animation}]}]}>
         <LinearGradient start={[0, 1]} end={[1, 0]}  colors={['#E57Caa', '#EC71A6', '#5A65E5']} 
         style={styles.ln}>
         <Text style={styles.catTxt} >{props.children}</Text>
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
+        borderRadius:5,
         // width:120,
     }
 })
