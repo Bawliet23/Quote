@@ -5,6 +5,7 @@ import Category from './screen/Category';
 import Quote from './components/Quote';
 import QuoteList from './screen/QuoteList';
 import Home from './screen/Home';
+import QuoteDetails from './screen/QuoteDetails';
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
 
       {/* <Image source={require('./assets/wallpaper.jpg')} style={StyleSheet.absoluteFillObject} blurRadius={.8} />
       <Category /> */}
-      <Home />
+      <QuoteList />
       </SafeAreaView>
 
     
