@@ -7,7 +7,7 @@ import { View, Text, FlatList, StyleSheet, Animated } from 'react-native'
 const QuoteList = () => {
 
        const scrollY = useRef(new Animated.Value(0)).current; 
-       const ITEM_SIZE = 200;
+       const ITEM_SIZE = 220;
 
 const [quotes, setQuotes] = useState([
 
@@ -32,41 +32,99 @@ const [quotes, setQuotes] = useState([
 {
        "quote":"Definiteness of purpose is the starting point of all achievement.","author":"W. Clement Stone"},
 {
-       "quote":"We must balance conspicuous consumption with conscious capitalism.","author":"Kevin Kruse"},
+       "quote":"We must balance conspicuous consumption with conscious capitalism.","author":"Kevin Krue"},
 {
        "quote":"Life is what happens to you while you’re busy making other plans.","author":"John Lennon"},
 {
        "quote":"We become what we think about.","author":"Earl Nightingale"},
     
 ])
+const quoteStyles = StyleSheet.create({
+    quoteContainer :{
+        display:'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin:20,
+        borderRadius: 10,
+        height:180,
+        backgroundColor:'blue',
+        fontSize: 30,
+        shadowOpacity:.4,
+        shadowRadius:20,
+        
+    },
+    quote :{
+        flex:5,
+        display:'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
+    author :{
+        flex:1,
+        
+    },
+    quoteOptions :{
+        width:'90%',
+        display:'flex',
+        flex:2,
+        flexDirection:'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        
+    },
+    like:{
+        fontSize: 24,
+        color:'#FFF',
+    },
+    share:{
+        fontSize: 24,
+    },
+    text:{ 
+    paddingHorizontal:40,
+    fontSize: 24,
+    },
+    authorText:{ 
+        borderBottomColor: 'red',
+        borderBottomWidth: 2,
+        marginBottom: 30,
+        fontSize: 15,
+        fontWeight:'700',
+    }
+    
+
+})
 
     return (
            
+           
             <Animated.FlatList
-              onScroll={
+              onScroll={                     
                      Animated.event([{ nativeEvent: { contentOffset: { y:scrollY } } }], {
                      useNativeDriver: true,
-                     })}     
+                     })}
                 data={quotes}
                 renderItem ={({ item, index }) => { 
-                const inputRange = [-1, 0, ITEM_SIZE*index, ITEM_SIZE*(index+2)]
-                const scale = scrollY.interpolate({
-                       inputRange,
-                       outputRange: [1,1,1,0]
-                })
-                const transform = [{transform:scale}]
-                
-                return <Quote animation={transform} color={['#bb7Caa', '#aC71A6', '#5A65E5']} quote={item.quote} author={item.author} />
-                
-                 }}
-                keyExtractor={item => item.author}
+
+                     const inputRange = [-1, 0, ITEM_SIZE*index, ITEM_SIZE*(index+2)]
+                     const scale = scrollY.interpolate({
+                            inputRange,
+                            outputRange: [1,1,1,0]
+                     })
+
+                return ( 
+                    
+                          <Quote style={quoteStyles} color={['#bb7Caa', '#aC71A6', '#5A65E5']} quote={item.quote} author={item.author} />
+                   
+                )}}
             />
     )
+    
 }
-// const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
 
-const styles = StyleSheet.create({
 
-})
+
+
+
 
 export default QuoteList

@@ -1,4 +1,4 @@
-import React ,{useRef,useEffect} from 'react';
+import React,{useRef} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Animated} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -6,29 +6,34 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
+
 const Quote = (props:any) => {
   
   
     return (
-        <Animated.View  style={styles.quoteContainer} >
+        <Animated.View  style={[styles.quoteContainer,{transform:[{scale}]}]} >
         <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={styles.lnCon}>
             <View style={styles.quote}>
                 <Text style={styles.text}
+
                 numberOfLines={2}
                 >{props.quote}</Text>
             </View>
-            <View style={styles.author}>
-                <Text style={styles.authorText}>{props.author}</Text>
+            <View style={style.author}>
+                <Text style={style.authorText}>{props.author}</Text>
             </View>
+
             <View  style={styles.quoteOptions} >
                 <Ionicons name="heart" style={styles.like} ></Ionicons>
                 <FontAwesome5 name="share" style={styles.like}></FontAwesome5>
+
             </View>
         </LinearGradient>
         </Animated.View>
     );
 }
 
+=======
 const styles = StyleSheet.create({
     quoteContainer :{
         display:'flex',
