@@ -105,6 +105,7 @@ const quoteStyles = StyleSheet.create({
                      })}
                 data={quotes}
                 renderItem ={({ item, index }) => { 
+
                      const inputRange = [-1, 0, ITEM_SIZE*index, ITEM_SIZE*(index+2)]
                      const scale = scrollY.interpolate({
                             inputRange,
@@ -112,11 +113,10 @@ const quoteStyles = StyleSheet.create({
                      })
 
                 return ( 
-                     <Animated.View style={{transform:[{scale}]}} >
-                          <Quote style={quoteStyles} quote={item.quote} author={item.author} />
-                     </Animated.View> 
+                    
+                          <Quote style={quoteStyles} color={['#bb7Caa', '#aC71A6', '#5A65E5']} quote={item.quote} author={item.author} />
+                   
                 )}}
-                keyExtractor={item => item.author}
             />
     )
     
