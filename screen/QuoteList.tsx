@@ -106,7 +106,7 @@ const quoteStyles = StyleSheet.create({
                 data={quotes}
                 renderItem ={({ item, index }) => { 
 
-                     const inputRange = [-1, 0, ITEM_SIZE*index, ITEM_SIZE*(index+2)]
+                     const inputRange = [-1, 0, (ITEM_SIZE)*index, (ITEM_SIZE)*(index+2)]
                      const scale = scrollY.interpolate({
                             inputRange,
                             outputRange: [1,1,1,0]

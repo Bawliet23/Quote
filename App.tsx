@@ -3,10 +3,14 @@ import React from 'react';
 import { StyleSheet, SafeAreaView,Image} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Home from './screen/Home';
+import QuoteList from './screen/QuoteList';
+
 
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import DrawerComponent from './components/DrawerComponent';
+import Category from './screen/Category';
 
 
 const Stack = createStackNavigator();
@@ -16,11 +20,21 @@ export default function App() {
     <SafeAreaView style={styles.container} >
 <NavigationContainer>
 
-<Drawer.Navigator  screenOptions={{
+<Drawer.Navigator 
+drawerContent={(props)=><DrawerComponent
+  navigation={props.navigation}
+  routes={props.state.routeNames}
+  selectedRoute={props.state.routeNames[props.state.index]}
+  />}
+screenOptions={{
     headerShown: false
-  }} initialRouteName="Home">
+  }}
+   initialRouteName="Home">
         <Drawer.Screen name="Home" component={Home} />
-        {/* <Drawer.Screen name="Notifications" component={NotificationsScreen} /> */}
+        <Drawer.Screen name="Category" component={Category} />
+        <Drawer.Screen name="Quotes" component={QuoteList} />
+        <Drawer.Screen name="Share" component={Home} />
+        <Drawer.Screen name="Like" component={Home} />
       </Drawer.Navigator>
 
 
