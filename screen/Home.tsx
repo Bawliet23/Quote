@@ -107,7 +107,7 @@ const Home = ({ navigation }) => {
         })}]}>
         <Text style={styles.catTitle}>Quote Of The Day</Text>
         <Quote
-          animation={null}
+        scale={1}
           color={["#857EDE", "#6E71E5", "#5A65E5"]}
           quote="We become what we think about."
           author="Mohamed BHAJY"

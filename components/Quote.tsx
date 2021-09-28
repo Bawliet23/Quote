@@ -11,7 +11,7 @@ const Quote = (props:any) => {
   
   
     return (
-        <Animated.View  style={[styles.quoteContainer,{transform:[{scale}]}]} >
+        <Animated.View  style={[styles.quoteContainer,{transform:[{scale:props.scale}]}]} >
         <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={styles.lnCon}>
             <View style={styles.quote}>
                 <Text style={styles.text}
@@ -19,8 +19,8 @@ const Quote = (props:any) => {
                 numberOfLines={2}
                 >{props.quote}</Text>
             </View>
-            <View style={style.author}>
-                <Text style={style.authorText}>{props.author}</Text>
+            <View style={styles.author}>
+                <Text style={styles.authorText}>{props.author}</Text>
             </View>
 
             <View  style={styles.quoteOptions} >
@@ -33,7 +33,7 @@ const Quote = (props:any) => {
     );
 }
 
-=======
+
 const styles = StyleSheet.create({
     quoteContainer :{
         display:'flex',

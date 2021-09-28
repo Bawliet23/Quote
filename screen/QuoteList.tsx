@@ -114,7 +114,7 @@ const quoteStyles = StyleSheet.create({
 
                 return ( 
                     
-                          <Quote style={quoteStyles} color={['#bb7Caa', '#aC71A6', '#5A65E5']} quote={item.quote} author={item.author} />
+                          <Quote  color={['#bb7Caa', '#aC71A6', '#5A65E5']} scale={scale} quote={item.quote} author={item.author} />
                    
                 )}}
             />
