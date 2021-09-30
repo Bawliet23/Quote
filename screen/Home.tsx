@@ -26,7 +26,7 @@ const Home = ({ navigation }) => {
   useEffect(()=>{
       Animated.timing(quoteConTX,{
           toValue:0,
-          duration:2000,
+          duration:700,
           useNativeDriver:true
       }).start()
   },[])

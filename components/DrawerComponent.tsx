@@ -1,11 +1,10 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import React from 'react'
-import { View, Text,TouchableOpacity } from 'react-native'
+import { View, Text,TouchableOpacity, Image } from 'react-native'
 import { colors,  } from '../assets/utils';
-
 const Button = ({ title, onPress, style }) => {
     return (
-      <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
+      <TouchableOpacity style={{margin:5,marginHorizontal:15}} onPress={onPress} activeOpacity={0.9}>
         <Text style={style}>{title}</Text>
       </TouchableOpacity>
     );
@@ -17,19 +16,31 @@ const Drawer = ({navigation,routes,selectedRoute}) => {
       }, []);
 
     return (
-        <LinearGradient style={{flex:1,justifyContent:"center"}}   colors={["#857EDE", "#6E71E5", "#5A65E5"]}>
-            <View style={{display:"flex",flex:0.5,marginLeft:15,justifyContent:"space-evenly"}}>
+        <View style={{flex:1,justifyContent:"center"}} >
+          <View style={{display:"flex",flex:0.4,justifyContent:"center",alignItems:"center"}}>
+            <Image style={{
+              width: "100%",
+     height: "100%",
+    resizeMode: 'cover',}}  source={require('../assets/quoteLogo.jpg')} />
+    {/* <Text style={{marginTop: 15,color:"#fff",fontSize:22}} >QUOTES</Text> */}
+          </View>
+            <View style={{display:"flex",flex:1,}}>
             {routes.map((route, index) => {
               return (
                 <Button
                   key={route}
                   title={route}
                   style={{
-                    fontSize: 32,
-                    color: colors[index],
-                    lineHeight: 32 * 1.5,
-                      textDecorationLine:
-                        route === selectedRoute ? 'line-through' : 'none',
+                    fontSize: 22,
+                    fontWeight:'bold',
+                    padding: 15,
+                    color: route===selectedRoute?"#fff":"#000",
+                    lineHeight: 22 * 1.5,
+                    textTransform: 'uppercase',
+                      // textDecorationLine:
+                      //   route === selectedRoute ? 'line-through' : 'none',
+                        backgroundColor: route=== selectedRoute ? "#000": "#fff",
+                        borderRadius:5,
                     
                     }
                   }
@@ -38,7 +49,7 @@ const Drawer = ({navigation,routes,selectedRoute}) => {
               );
             })}
           </View>
-        </LinearGradient>
+        </View>
     )
 }
 
