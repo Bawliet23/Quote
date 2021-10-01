@@ -109,8 +109,8 @@ const Home = ({ navigation }) => {
         <Quote
         scale={1}
           color={["#857EDE", "#6E71E5", "#5A65E5"]}
-          quote="We become what we think about."
-          author="Mohamed BHAJY"
+          item={{id:245176,quote:"We become what we think about.",author:"Mohamed BHAJY"}}
+          navigation={navigation}
         />
       </Animated.View>
       {/* Saved Quotes */}
@@ -119,7 +119,7 @@ const Home = ({ navigation }) => {
           outputRange:[1,0]  
         })}}>
       <Text style={styles.catTitle}>Trending</Text>
-      <QuoteList />
+      <QuoteList navigation={navigation} />
 
       </Animated.View>
       </ScrollView>
@@ -162,10 +162,10 @@ const styles = StyleSheet.create({
     //  backgroundColor :"#aefeeeea"
   },
   QuoteOfTheDay: {
-    flex: 1,
-    minHeight:150,
-    //   height:500,
-    //    backgroundColor :"#333"
+    display:"flex",
+      // flex: 1,
+    minHeight:250,
+      //  backgroundColor :"#333"
   },
   catTitle: {
     marginHorizontal: 12,
