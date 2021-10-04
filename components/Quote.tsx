@@ -12,7 +12,6 @@ const Quote = (props:any) => {
   
   
     return (
-        <SharedElement style={{flex:1}}  id={props.item.id} >
         <TouchableOpacity style={{flex:1}}  activeOpacity={.7} onPress={()=>props.navigation.navigate("QuoteDetails",props.item)} >
         <Animated.View  style={[styles.quoteContainer,{transform:[{scale:props.scale}]}]} >
         <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={styles.lnCon}>
@@ -33,7 +32,6 @@ const Quote = (props:any) => {
         </LinearGradient>
         </Animated.View>
         </TouchableOpacity>
-        </SharedElement>
     );
 }
 
