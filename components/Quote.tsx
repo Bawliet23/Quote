@@ -1,37 +1,44 @@
 import React,{useRef} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity, Animated, TouchableOpacityBase} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Animated,Clipboard} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { LinearGradient } from 'expo-linear-gradient';
 import { SharedElement } from 'react-navigation-shared-element';
-
-
+import Toast, {DURATION} from 'react-native-easy-toast'
 
 
 const Quote = (props:any) => {
-  
+    let toastRef;
   
     return (
-        <TouchableOpacity style={{flex:1}}  activeOpacity={.7} onPress={()=>props.navigation.navigate("QuoteDetails",props.item)} >
         <Animated.View  style={[styles.quoteContainer,{transform:[{scale:props.scale}]}]} >
         <LinearGradient start={[0, 1]} end={[1, 0]} colors={props.color} style={styles.lnCon}>
+        <TouchableOpacity style={{flex:6}}  activeOpacity={.7} onPress={()=>props.navigation.navigate("QuoteDetails",props.item)} >
+
             <View style={styles.quote}>
                 <Text style={styles.text}
 
                 numberOfLines={2}
                 >{props.item.quote}</Text>
             </View>
-          
+            </TouchableOpacity>
 
             <View  style={styles.quoteOptions} >
-                <Ionicons name="heart" style={styles.like} ></Ionicons>
+            <TouchableOpacity >
+                <Ionicons name="heart" style={styles.like} />
+                </TouchableOpacity>
                 <Text style={styles.authorText}>{props.item.author}</Text>
-                <FontAwesome5 name="share" style={styles.like}></FontAwesome5>
+                <TouchableOpacity style={{zIndex:99}} onPress={()=>{Clipboard.setString(props.item.quote)
+                toastRef.show('Copied')
+                }} >
+                <Ionicons name="copy" style={styles.like} />
+                </TouchableOpacity >
 
             </View>
+            
         </LinearGradient>
+        <Toast ref={(toast) => toastRef = toast} position={'bottom'}/>
         </Animated.View>
-        </TouchableOpacity>
+        
     );
 }
 
@@ -43,7 +50,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         margin:10,
         borderRadius: 10,
-        flex:3,
+        flex:1,
         // borderWidth: 3,
         // borderColor: 'red',
         // height:180,
@@ -54,7 +61,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        flex:2,
+        flex:1,
         width:"100%",
         height:"100%",
     },

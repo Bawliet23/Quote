@@ -10,7 +10,7 @@ const QuoteDetails = (props) => {
     
     return (
         <View  style={{display:"flex",flex:1,justifyContent:"center",alignItems:"center"}}>
-       <Banner item={item} />
+       <Banner navigation={props.navigation} item={item} />
         </View>
     )
 }

@@ -12,7 +12,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import DrawerComponent from './components/DrawerComponent';
 import Category from './screen/Category';
 import QuoteDetails from './screen/QuoteDetails';
-
+import Toast, {DURATION} from 'react-native-easy-toast'
 
 const Stack = createSharedElementStackNavigator();
 const Drawer = createDrawerNavigator();

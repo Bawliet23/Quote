@@ -1,14 +1,14 @@
 import React from 'react'
-import { View, Text ,StyleSheet } from 'react-native'
+import { View, Text ,StyleSheet, TouchableOpacity } from 'react-native'
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 
-const Banner = ({item}) => {
+const Banner = ({item,navigation}) => {
     return (
         <View style={style.banner}>
-            <View style={{display:"flex",justifyContent:"flex-start",alignItems:"flex-start",width:"100%"}}>
+            <TouchableOpacity onPress={()=>{navigation.goBack()}} style={{display:"flex",justifyContent:"flex-start",alignItems:"flex-start",width:"100%"}}>
             <AntDesign style={{color:"#e0ac56",fontSize:35,marginLeft:15}} name="arrowleft"  />
-            </View>
+            </TouchableOpacity>
                 <Text style={style.double} >❝</Text>
          <View style={style.quoteContainer} >
                 <Text style={style.quote} >{item.quote}</Text>
